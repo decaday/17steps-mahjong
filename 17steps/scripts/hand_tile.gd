@@ -44,7 +44,6 @@ func on_clicked():
 			self.move_local_y(-SELECT_OFFSET_Y)
 
 
-
 func discard_state_update(state: bool):
 	can_select = state
 	if not state and is_selected:

@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="17steps"
-run/main_scene="res://mahjong_table.tscn"
+run/main_scene="res://scenes/mahjong_table.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://signal_bus.gd"
+SignalBus="*res://scripts/signal_bus.gd"
 
 [display]
 
