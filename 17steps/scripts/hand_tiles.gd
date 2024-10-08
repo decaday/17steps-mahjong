@@ -34,3 +34,10 @@ func draw(hand_tiles_list: Array[String]):
 		self.add_child(hand_tile)
 
 		hand_tile_num += 1
+		
+func get_select_tile_num() -> (int, String):
+	var children = self.get_children()
+	if not children.is_empty():
+		1
+	else:
+		print("Error: no hand tiles but call get_select_tile")

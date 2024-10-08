@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbw6msyw4efkd"]
 
 [ext_resource type="Script" path="res://scripts/mahjong_table.gd" id="1_ep4pt"]
-[ext_resource type="Script" path="res://scenes/hand_tiles.gd" id="2_kw6yd"]
+[ext_resource type="Script" path="res://scripts/hand_tiles.gd" id="2_kw6yd"]
 [ext_resource type="Script" path="res://scripts/tile_action_buttons.gd" id="3_18fxv"]
 
 [node name="MahjongTable" type="Node2D"]
@@ -15,4 +15,5 @@ script = ExtResource("2_kw6yd")
 position = Vector2(1700, 900)
 
 [node name="TileActionButtons" type="Node2D" parent="."]
+position = Vector2(958, 514)
 script = ExtResource("3_18fxv")
