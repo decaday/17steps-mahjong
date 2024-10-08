@@ -3,7 +3,7 @@ extends Node2D
 # var mahjong_table;
 var is_selected: bool = false
 var can_select: bool = false
-var hand_tile_num: int = 0
+var hand_tile: GameType.HandTile
 
 const SELECT_OFFSET_Y: int = 20
 
@@ -12,10 +12,10 @@ func _ready():
 	$Tile.clicked.connect(on_clicked)
 	SignalBus.certain_hand_tile_select.connect(on_certain_hand_tile_selected)
 	
-func setup(tile_name: String, this_hand_tile_num: int, discard_state_signal: Signal):
+func setup(tile: GameType.HandTile, discard_state_signal: Signal):
 	discard_state_signal.connect(discard_state_update)
-	self.hand_tile_num = this_hand_tile_num
-	$Tile.setup(tile_name)
+	self.hand_tile = tile
+	$Tile.setup(tile.name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -27,9 +27,9 @@ func get_tile_name() -> String:
 func set_tile_name() -> String:
 	return $Tile.tile_name
 
-func on_certain_hand_tile_selected(selected_hand_tile_num: int):
+func on_certain_hand_tile_selected(selected_hand_tile: GameType.HandTile):
 	if self.is_selected:
-		if selected_hand_tile_num != self.hand_tile_num:
+		if selected_hand_tile.num != self.hand_tile.num:
 			self.is_selected = false
 			self.move_local_y(SELECT_OFFSET_Y)
 
@@ -39,7 +39,7 @@ func on_clicked():
 			self.is_selected = false
 			self.move_local_y(SELECT_OFFSET_Y)
 		else:
-			SignalBus.certain_hand_tile_select.emit(self.hand_tile_num)
+			SignalBus.certain_hand_tile_select.emit(self.hand_tile)
 			self.is_selected = true
 			self.move_local_y(-SELECT_OFFSET_Y)
 

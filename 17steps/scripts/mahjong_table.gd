@@ -12,6 +12,8 @@ var test_hand_tiles_list: Array[String] = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HandTiles.draw(test_hand_tiles_list)
+	for tile in test_hand_tiles_list:
+		$MyTileRiver.draw_a_tile(tile)
 	its_my_turn()
 	
 

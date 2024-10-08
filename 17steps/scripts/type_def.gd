@@ -26,3 +26,9 @@ class HandTile:
 	var name: String
 	var num: int
 	
+class RiverTile:
+	var name: String
+	var num: int
+	
+		
+	

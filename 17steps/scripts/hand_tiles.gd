@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var TILES_SPACING: int = get_parent().TILES_SPACING
+const HAND_TILES_SPACING = 70
 
 @onready var discard_state: Signal = get_parent().discard_state
 
@@ -28,16 +28,26 @@ func draw(hand_tiles_list: Array[String]):
 		var hand_tile = preload("res://scenes/hand_tile.tscn").instantiate()
 		
 		hand_tile.set_position(
-			Vector2((hand_tile_num - 7 ) * TILES_SPACING, 0))
-		hand_tile.setup(tile_name, hand_tile_num, discard_state)
+			Vector2((hand_tile_num - 7 ) * HAND_TILES_SPACING, 0))
+		var tile = GameType.HandTile.new()
+		tile.name = tile_name
+		tile.num = hand_tile_num
+		hand_tile.setup(tile, discard_state)
 		
 		self.add_child(hand_tile)
 
 		hand_tile_num += 1
-		
-func get_select_tile_num() -> (int, String):
+
+
+
+func get_selected_tile_num() -> GameType.HandTile:
 	var children = self.get_children()
 	if not children.is_empty():
-		1
+		for child in children:
+			if child.is_selected:
+				return child.hand_tile
 	else:
 		print("Error: no hand tiles but call get_select_tile")
+		return GameType.HandTile.new()
+	return GameType.HandTile.new()
+	

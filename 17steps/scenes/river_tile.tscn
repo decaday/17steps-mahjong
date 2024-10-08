@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhh3shxsy77xt"]
+
+[ext_resource type="Script" path="res://scripts/river_tile.gd" id="1_7mn8y"]
+[ext_resource type="PackedScene" uid="uid://t40vefsgh4pb" path="res://scenes/tile.tscn" id="2_g20rb"]
+
+[node name="HandTile" type="Node2D"]
+script = ExtResource("1_7mn8y")
+
+[node name="Tile" parent="." instance=ExtResource("2_g20rb")]
+scale = Vector2(1, 1)

@@ -39,3 +39,10 @@ func draw(action: GameType.Action):
 			button.position.y = 0  # 保持y坐标为0，使其在一行上
 
 func on_took_action(action: GameType.Action):
+	match action:
+		GameType.Action.DISCARD:
+			var tile: GameType.HandTile = get_node("../HandTiles").get_selected_tile_num()
+			print("出牌")
+			print(tile)
+		_:
+			print("操作")
